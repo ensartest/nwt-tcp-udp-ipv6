@@ -36,3 +36,14 @@ function feedback(el, ok, title, msgs, partial) {
 }
 /* Adressen nur an Doppelpunkten umbrechen */
 function wbr(t) { return String(t).replace(/:/g, ':<wbr>'); }
+/* Bestätigung direkt auf der Seite (confirm() ist in manchen Ansichten gesperrt) */
+function askConfirm(msg, yesLabel, onYes) {
+  const close = () => ov.remove();
+  const ov = h('div', { class: 'overlay', role: 'dialog', 'aria-modal': 'true' },
+    h('div', { class: 'dialog' }, h('p', null, msg),
+      h('div', { class: 'ctrls' },
+        h('button', { class: 'btn', onclick: () => { close(); onYes(); } }, yesLabel),
+        h('button', { class: 'btn ghost', onclick: close }, 'Zurück'))));
+  document.body.append(ov);
+  ov.querySelector('.btn').focus();
+}

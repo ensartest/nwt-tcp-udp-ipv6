@@ -210,12 +210,12 @@ function renderTest() {
     box.append(card);
   });
   updProg();
-  box.append(h('div', { class: 'ctrls' }, h('button', { class: 'btn big', onclick: submitTest }, 'Abgeben & benoten'), h('button', { class: 'btn ghost', onclick: () => { if (confirm('Test abbrechen?')) renderTestStart(); } }, 'Abbrechen')));
+  box.append(h('div', { class: 'ctrls' }, h('button', { class: 'btn big', onclick: () => submitTest() }, 'Abgeben & benoten'), h('button', { class: 'btn ghost', onclick: () => askConfirm('Test wirklich abbrechen? Deine Antworten gehen verloren.', 'Abbrechen', renderTestStart) }, 'Abbrechen')));
   window.scrollTo({ top: 0 });
 }
-function submitTest() {
+function submitTest(force) {
   const open = testState.qs.filter(x => x.val === null || x.val === '').length;
-  if (open && !confirm(`${open} Aufgabe(n) sind noch offen. Trotzdem abgeben?`)) return;
+  if (open && force !== true) return askConfirm(`${open} Aufgabe(n) sind noch offen. Trotzdem abgeben?`, 'Trotzdem abgeben', () => submitTest(true));
   const cards = store.get('cards', {});
   let s = 0;
   testState.qs.forEach(it => {
@@ -292,7 +292,7 @@ function renderCards(rebuild = true) {
   }
   box.append(card);
   box.append(h('p', { class: 'small' }, '„Kann ich noch nicht“ legt die Karte hinten in den Stapel zurück. „Kann ich“ verschiebt sie zu „Kann ich“. ',
-    h('button', { class: 'linkbtn', onclick: () => { if (confirm('Alle Karteikarten-Markierungen löschen?')) { store.set('cards', {}); renderCards(); } } }, 'Alles zurücksetzen')));
+    h('button', { class: 'linkbtn', onclick: () => askConfirm('Alle Karteikarten-Markierungen löschen?', 'Löschen', () => { store.set('cards', {}); renderCards(); }) }, 'Alles zurücksetzen')));
 }
 
 /* ═════════════ Start ═════════════ */

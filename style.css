@@ -13,6 +13,7 @@
     --ok: #4cc27f; --ok-soft: #163024; --bad: #ff7b70; --bad-soft: #3a1c1a; --warn: #f0b04a; --warn-soft: #382a12;
     --merk: #b996f5; --merk-soft: #2a2140; --tipp-soft: #142e2c; --tipp: #5fd1c5;
     --np: #6b9cff; --sn: #f0a54a; --iid: #4cc27f; --code-bg: #262c38; --shadow: none;
+    color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
@@ -21,6 +22,7 @@
   --ok: #4cc27f; --ok-soft: #163024; --bad: #ff7b70; --bad-soft: #3a1c1a; --warn: #f0b04a; --warn-soft: #382a12;
   --merk: #b996f5; --merk-soft: #2a2140; --tipp-soft: #142e2c; --tipp: #5fd1c5;
   --np: #6b9cff; --sn: #f0a54a; --iid: #4cc27f; --code-bg: #262c38; --shadow: none;
+    color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -40,7 +42,7 @@ h5 { margin: 1em 0 .3em; font-size: .95rem; color: var(--acc); }
 .brand small { display: block; color: var(--muted); font-size: .8rem; }
 .logo { width: 36px; height: 36px; border-radius: 9px; background: var(--acc); color: var(--acc-ink); display: grid; place-items: center; font-weight: 800; }
 .iconbtn { background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 8px; width: 38px; height: 38px; font-size: 1.1rem; cursor: pointer; }
-.tabs { position: sticky; top: 0; z-index: 5; display: flex; gap: 4px; padding: 6px 12px; background: var(--card); border-bottom: 1px solid var(--line); overflow-x: auto; }
+.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; display: flex; gap: 4px; padding: 6px 12px; background: var(--card); border-bottom: 1px solid var(--line); overflow-x: auto; }
 .tab { flex: 0 0 auto; border: 0; background: none; color: var(--muted); padding: 9px 14px; border-radius: 8px; font: inherit; font-weight: 600; cursor: pointer; }
 .tab[aria-selected="true"] { background: var(--acc-soft); color: var(--acc); }
 main { max-width: 1180px; margin: 0 auto; padding: 18px 16px 40px; }
@@ -222,3 +224,7 @@ textarea.inp { resize: vertical; }
   .excard { padding: 14px; }
   .qaddr { font-size: .95rem; }
 }
+.overlay { position: fixed; inset: 0; z-index: 50; background: rgba(10,14,25,.55); display: grid; place-items: center; padding: 16px; }
+.dialog { background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 14px; padding: 20px; max-width: 420px; width: 100%; }
+.dialog p { margin-top: 0; font-weight: 600; }
+.btn:focus-visible, .opt:focus-visible, .tab:focus-visible { outline: 3px solid var(--acc); outline-offset: 2px; }

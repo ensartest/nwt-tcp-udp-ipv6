@@ -2,7 +2,9 @@
 
 Interaktive Lernseite zum Stoff **IPv6**, **TCP/UDP** und der **Packet-Tracer-Simulation „TCP- und UDP-Kommunikation“**.
 
-👉 **Seite öffnen:** https://ensartest.github.io/nwt-tcp-udp-ipv6/
+👉 **Seite öffnen:** privates Claude-Artifact (nur mit Link): https://claude.ai/artifact/Bix6A8VGDSYDw58hpN1W2Y
+
+Neu bauen: `node tools/build-artifact.js` → `.claude/artifact/nwt-lernseite.html`, dann als Artifact veröffentlichen.
 
 ## Tabs
 
