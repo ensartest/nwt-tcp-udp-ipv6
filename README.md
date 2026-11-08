@@ -10,8 +10,8 @@ Interaktive Lernseite zum Stoff **IPv6**, **TCP/UDP** und der **Packet-Tracer-Si
 | Tab | Inhalt |
 |---|---|
 | 📖 **Lernen** | 14 aufbauende Kapitel mit rotem Faden (Schicht 3 → Schicht 4 → Praxis), Merkhilfen, Tipps, Prüfungsfallen, Mini-Checks, Seitenangaben zu jedem Skript. Dazu eine Seite mit allen Merkhilfen und Abdeckmodus zum Auswendiglernen. |
-| ✎ **Übungen** | 9 Übungsarten: IPv6 kürzen, ausschreiben, Präfix/Subnetze, Adresstyp erkennen, Ports, TCP oder UDP, Abläufe ordnen, Header-Bits, Packet-Tracer-Fragen. Automatische Fehlerkorrektur mit Erklärung und Lösungsweg Schritt für Schritt. Zuerst die Skript-Beispiele, danach unbegrenzt Zufallsaufgaben. |
-| 🎯 **Test** | Pool aus 60 Aufgaben. Jeder Test hat 10 Aufgaben (4 IPv6, 4 TCP/UDP, 2 Packet Tracer) und wird benotet (1–5). |
+| ✎ **Übungen** | 9 Übungsarten: IPv6 kürzen, ausschreiben, Präfix/Subnetze, Adresstyp erkennen, Ports, TCP oder UDP, Abläufe ordnen, Header-Bits, Packet-Tracer-Fragen. Automatische Fehlerkorrektur mit Erklärung und Lösungsweg Schritt für Schritt. Zuerst die Skript-Beispiele, danach unbegrenzt Zufallsaufgaben. Jede Übungsart hat einen eigenen Untertab mit allen Aufgaben untereinander (★ = wichtig, mit mehr Zufallsaufgaben). |
+| 🎯 **Test** | Pool aus 80 Aufgaben. Jeder Test hat 10 Aufgaben (4 IPv6, 4 TCP/UDP, 2 Packet Tracer) und wird benotet (1–5). ★ wichtige Fragen kommen etwa dreimal so oft dran. Unter dem Start-Knopf lassen sich alle Fragen nach Thema ansehen. |
 | 🗂 **Karteikarten** | Falsch beantwortete Testfragen werden markiert und landen hier. Aufdecken und dann „Kann ich“ oder „Kann ich noch nicht“ wählen. |
 
 ## Quellen

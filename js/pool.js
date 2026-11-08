@@ -1,4 +1,4 @@
-/* Testpool: 60 Aufgaben. t = Themenbereich (ip6 / tcp / pt)
+/* Testpool: 60 + 20 Zusatzaufgaben (★ w: 3 = wichtig, kommt öfter dran). t = Themenbereich (ip6 / tcp / pt)
    mc: o = Optionen, a = Index der richtigen Option
    in: acc = akzeptierte Antworten (normalisiert verglichen), show = Musterantwort */
 const POOL = [
@@ -124,5 +124,52 @@ const POOL = [
 { id:'p59', t:'pt', type:'mc', q:'Packet Tracer: Nur eine PDU je Richtung pro Leitung, mehrere Anwendungen teilen sich das Netz – wie heißt das?', o:['Routing','Multiplexing','Fragmentierung','Tunneling'], a:1,
   why:'Multiplexing: mehrere Datenströme teilen sich die Leitung; Portnummern ordnen sie den Anwendungen zu.', src:[['PT',1],['PT',3]] },
 { id:'p60', t:'pt', type:'mc', q:'Packet Tracer: Welche Sitzung bleibt bei netstat am längsten ESTABLISHED – und warum?', o:['DNS, weil UDP schneller ist','HTTP, weil der Browser offen ist','FTP, weil der FTP-Client noch angemeldet ist','SMTP, weil Mails gespeichert werden'], a:2,
-  why:'Die FTP-Sitzung bleibt offen, weil der FTP-Client noch verbunden/angemeldet ist und nicht mit FIN beendet hat. DNS (UDP) hat überhaupt keine Sitzung.', src:[['PT',6],['TCP',2]] }
+  why:'Die FTP-Sitzung bleibt offen, weil der FTP-Client noch verbunden/angemeldet ist und nicht mit FIN beendet hat. DNS (UDP) hat überhaupt keine Sitzung.', src:[['PT',6],['TCP',2]] },
+
+/* ─────────── Zusatzfragen zu den wichtigsten Themen (★, w: 3) ─────────── */
+{ id:'q01', t:'ip6', w:3, type:'in', q:'Schreibe in kürzester Form: 2001:0db8:0000:0000:0000:0000:1428:57ab', acc:['2001:db8::1428:57ab'], show:'2001:db8::1428:57ab',
+  why:'Führende Nullen weg (0db8 → db8), die 4 Null-Gruppen in der Mitte werden zu ::.', src:[['IP6',1],['IP6',2]] },
+{ id:'q02', t:'ip6', w:3, type:'in', q:'Schreibe in kürzester Form: fe80:0000:0000:0000:0202:b3ff:fe1e:8329', acc:['fe80::202:b3ff:fe1e:8329'], show:'fe80::202:b3ff:fe1e:8329',
+  why:'3 Null-Gruppen → ::, bei 0202 fällt nur die vordere Null weg (→ 202).', src:[['IP6',1],['IP6',2]] },
+{ id:'q03', t:'ip6', w:3, type:'in', q:'Schreibe in kürzester Form: 2001:0db8:0000:0001:0000:0000:0000:0001', acc:['2001:db8:0:1::1'], show:'2001:db8:0:1::1',
+  why:'Es gibt eine einzelne Null-Gruppe (Gruppe 3 → 0) und eine Kette aus 3 Null-Gruppen (5–7). Nur die längste Kette wird zu ::.', src:[['IP6',2]] },
+{ id:'q04', t:'ip6', w:3, type:'in', q:'Schreibe voll aus (alle 8 Gruppen, je 4 Ziffern): fe80::1', acc:['fe80:0000:0000:0000:0000:0000:0000:0001'], show:'fe80:0000:0000:0000:0000:0000:0000:0001', full:true,
+  why:'2 Gruppen vorhanden → :: steht für 8 − 2 = 6 Null-Gruppen.', src:[['IP6',2]] },
+{ id:'q05', t:'ip6', w:3, type:'in', q:'Schreibe voll aus: 2001:db8::8:800:200c:417a', acc:['2001:0db8:0000:0000:0008:0800:200c:417a'], show:'2001:0db8:0000:0000:0008:0800:200c:417a', full:true,
+  why:'6 Gruppen vorhanden → :: = 2 Null-Gruppen. Jede Gruppe vorne auf 4 Ziffern auffüllen (8 → 0008, 800 → 0800).', src:[['IP6',2]] },
+{ id:'q06', t:'ip6', w:3, type:'in', q:'Wie viele Subnetze sind bei einem /52-Präfix möglich (Interface ID = 64 Bit)?', acc:['4096','2^12'], show:'4 096 (= 2¹²)', num:true,
+  why:'64 − 52 = 12 Subnetz-Bits → 2¹² = 4096.', src:[['IP6',3]] },
+{ id:'q07', t:'ip6', w:3, type:'in', q:'Wie viele Bit bleiben bei einem /56-Präfix fürs Subnetting (Interface ID = 64 Bit)?', acc:['8'], show:'8 Bit', num:true,
+  why:'64 − 56 = 8.', src:[['IP6',3]] },
+{ id:'q08', t:'ip6', w:3, type:'mc', q:'Welcher Typ ist die Adresse ff02::1?', o:['Multicast','Link-Local','Global Unicast','Loopback'], a:0,
+  why:'FF am Anfang = Multicast (FF00::/8).', src:[['IP6',5]] },
+{ id:'q09', t:'ip6', w:3, type:'mc', q:'Welcher Typ ist die Adresse fe80::1a2b:3c4d?', o:['Link-Local','Unique Local','Multicast','Site Local'], a:0,
+  why:'FE80::/10 = Link-Local – jedes Gerät hat eine.', src:[['IP6',5]] },
+{ id:'q10', t:'ip6', w:3, type:'mc', q:'Welcher Typ ist die Adresse 2a01:468:1000::5?', o:['Global Unicast','Unique Local','Link-Local','Multicast'], a:0,
+  why:'Beginnt mit 2 bzw. 3 (2000::/3) = Global Unicast.', src:[['IP6',5]] },
+{ id:'q11', t:'ip6', w:3, type:'mc', q:'Welche Kürzungsregel ist FALSCH?', o:['Nullen am Ende einer Gruppe dürfen weggelassen werden','Führende Nullen einer Gruppe dürfen weggelassen werden','Eine Kette von Null-Gruppen darf durch :: ersetzt werden',':: darf nur einmal vorkommen'], a:0,
+  why:'Nur führende (vordere) Nullen fallen weg. aa00 bleibt aa00!', src:[['IP6',1],['IP6',2]] },
+{ id:'q12', t:'ip6', w:3, type:'mc', q:'Warum darf :: in einer Adresse nur einmal vorkommen?', o:['Sonst wüsste man nicht, wie viele Null-Gruppen an jeder Stelle fehlen','Weil :: für Multicast reserviert ist','Weil die Adresse sonst zu kurz wäre','Das ist nur eine Empfehlung'], a:0,
+  why:'Bei zweimal :: wäre die Aufteilung der fehlenden Null-Gruppen nicht eindeutig.', src:[['IP6',2]] },
+{ id:'q13', t:'tcp', w:3, type:'mc', q:'Was sendet der Client im dritten Schritt des 3-Wege-Handshakes?', o:['ACK','SYN','SYN/ACK','FIN'], a:0,
+  why:'SYN → SYN/ACK → ACK.', src:[['TCP',1]] },
+{ id:'q14', t:'tcp', w:3, type:'mc', q:'Was ist der Hauptunterschied zwischen TCP und UDP?', o:['TCP ist verbindungsorientiert und zuverlässig, UDP verbindungslos und schnell','UDP ist zuverlässiger als TCP','TCP arbeitet auf Schicht 3, UDP auf Schicht 4','Es gibt keinen Unterschied'], a:0,
+  why:'TCP: Handshake, ACKs, Reihenfolge. UDP: kein Verbindungsaufbau, wenig Overhead.', src:[['TCP',1],['TCP',4]] },
+{ id:'q15', t:'tcp', w:3, type:'in', q:'Welche Portnummer hat SMTP?', acc:['25'], show:'25', num:true,
+  why:'SMTP (E-Mail senden) = Port 25.', src:[['TCP',5]] },
+{ id:'q16', t:'tcp', w:3, type:'in', q:'Welche Portnummer hat die FTP-Steuerung?', acc:['21'], show:'21', num:true,
+  why:'21 = Steuerung („Chef“), 20 = Datentransfer.', src:[['TCP',5]] },
+{ id:'q17', t:'tcp', w:3, type:'in', q:'Welche Portnummer hat Telnet?', acc:['23'], show:'23', num:true,
+  why:'Telnet = 23, direkt nach SSH (22).', src:[['TCP',5]] },
+{ id:'q18', t:'tcp', w:3, type:'mc', q:'Wie groß ist der UDP-Header?', o:['8 Byte','20 Byte','40 Byte','4 Byte'], a:0,
+  why:'4 Felder × 16 Bit = 64 Bit = 8 Byte.', src:[['TCP',4]] },
+{ id:'q19', t:'tcp', w:3, type:'mc', q:'Mit welchem Flag beginnt der ordnungsgemäße Verbindungsabbau?', o:['FIN','RST','SYN','URG'], a:0,
+  why:'FIN → ACK → FIN → ACK. RST ist ein Abbruch, kein ordnungsgemäßer Abbau.', src:[['TCP',2]] },
+{ id:'q20', t:'pt', w:3, type:'mc', q:'Packet Tracer: Welches Transportprotokoll nutzt HTTP?', o:['TCP','UDP','ICMP','ARP'], a:0,
+  why:'Der letzte Abschnitt der HTTP-PDU ist TCP – zuverlässig, mit Handshake.', src:[['PT',3]] }
 ];
+
+/* Wichtige Fragen aus dem ersten Pool ebenfalls markieren (★, kommen im Test öfter dran) */
+['p01','p03','p05','p06','p07','p08','p09','p11','p12','p17','p20','p21','p22','p23','p30','p31','p34','p37','p41','p42','p44','p46','p47','p48','p53','p54']
+  .forEach(id => { const q = POOL.find(x => x.id === id); if (q) q.w = 3; });
+

@@ -228,3 +228,21 @@ textarea.inp { resize: vertical; }
 .dialog { background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 14px; padding: 20px; max-width: 420px; width: 100%; }
 .dialog p { margin-top: 0; font-weight: 600; }
 .btn:focus-visible, .opt:focus-visible, .tab:focus-visible { outline: 3px solid var(--acc); outline-offset: 2px; }
+
+/* Untertabs Übungen & Fragenpool */
+.subtab { display: inline-block; padding: 5px 11px; border-radius: 99px; background: var(--card); border: 1px solid var(--line); color: var(--muted); font: inherit; font-size: .85rem; font-weight: 600; cursor: pointer; }
+.subtab.imp { color: var(--ink); }
+.subtab:hover { border-color: var(--acc); }
+.subtab.on { background: var(--acc); border-color: var(--acc); color: var(--acc-ink); }
+#exToc { position: sticky; top: 52px; z-index: 4; background: var(--bg); padding: 8px 0; margin: 6px 0 12px; max-height: 40vh; overflow-y: auto; }
+.taskcard { padding: 14px 0 12px 12px; border-top: 1px dashed var(--line); border-left: 4px solid transparent; }
+.taskcard:first-child { border-top: 0; }
+.taskcard.done-ok { border-left-color: var(--ok); }
+.taskcard.done-bad { border-left-color: var(--bad); }
+.morebar { margin-bottom: 20px; }
+.tag.imp { background: var(--warn-soft); color: var(--warn); }
+.poolview { margin-top: 28px; }
+details.qa { border: 1px solid var(--line); border-radius: 10px; background: var(--card); margin: 8px 0; }
+details.qa > summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.qa .in { padding: 2px 14px 12px; border-top: 1px dashed var(--line); }
+@media (max-width: 480px) { #exToc { max-height: 30vh; } }

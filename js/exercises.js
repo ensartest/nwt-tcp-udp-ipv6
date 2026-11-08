@@ -372,3 +372,4 @@ const EXERCISES = [
   }
 }
 ];
+['short','full','prefix','type','ports','tcpudp','order'].forEach(id => { const e = EXERCISES.find(x => x.id === id); if (e) e.imp = true; });
