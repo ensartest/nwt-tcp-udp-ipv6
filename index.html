@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NWT Lernseite – IPv6, TCP & UDP</title>
+<meta name="description" content="Lernseite zu IPv6, TCP und UDP mit Übungen, Fehlerkorrektur, Test und Karteikarten – auf Basis der NWT-2-Skripten.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232f6fdb'/><text x='16' y='22' font-size='15' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>v6</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo">v6</span><div><b>NWT 2 · Lernseite</b><small>IPv6 · TCP · UDP · Packet Tracer</small></div></div>
+  <button id="themeBtn" class="iconbtn" title="Hell/Dunkel umschalten" aria-label="Hell/Dunkel umschalten">◐</button>
+</header>
+<nav class="tabs" role="tablist">
+  <button class="tab" role="tab" data-tab="lernen">📖 Lernen</button>
+  <button class="tab" role="tab" data-tab="uebungen">✎ Übungen</button>
+  <button class="tab" role="tab" data-tab="test">🎯 Test</button>
+  <button class="tab" role="tab" data-tab="karten">🗂 Karteikarten</button>
+</nav>
+<main>
+  <section id="lernen">
+    <div class="learn">
+      <aside>
+        <div id="learnProg"></div>
+        <nav id="learnNav"></nav>
+      </aside>
+      <div class="learnmain">
+        <select id="learnSelect" class="inp mobilesel" aria-label="Kapitel wählen"></select>
+        <article id="learnBody"></article>
+      </div>
+    </div>
+  </section>
+  <section id="uebungen" hidden>
+    <h2>Übungen mit Fehlerkorrektur</h2>
+    <p>Jede Übung prüft deine Antwort, sagt dir <b>was</b> falsch ist und <b>warum</b>, und zeigt auf Wunsch den kompletten <b>Lösungsweg Schritt für Schritt</b>. Die ersten Aufgaben sind die Übungsbeispiele aus den Skripten, danach gibt es unendlich viele Zufallsaufgaben.</p>
+    <div id="exToc" class="toc"></div>
+    <div id="exList"></div>
+  </section>
+  <section id="test" hidden><div id="testBody"></div></section>
+  <section id="karten" hidden>
+    <h2>Karteikarten</h2>
+    <p>Hier landen alle Fragen, die du im Test falsch hattest. Lies die Frage, überleg dir die Antwort, deck auf – und sag ehrlich, ob du sie kannst.</p>
+    <div id="cardBody"></div>
+  </section>
+</main>
+<footer>
+  Quellen: Skripten „NWT 2 – TCP &amp; UDP“ und „NWT 2 – IPv6“ (L. Singer) sowie Cisco-Arbeitsblatt „Packet Tracer Simulation – TCP- und UDP-Kommunikation“. Inhalte sinngemäß zusammengefasst, jede Aussage mit Seitenangabe zum Nachprüfen. Fortschritt wird nur lokal in deinem Browser gespeichert.
+</footer>
+<script src="js/util.js"></script>
+<script src="js/content.js"></script>
+<script src="js/pool.js"></script>
+<script src="js/ipv6.js"></script>
+<script src="js/exercises.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
